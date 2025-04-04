@@ -2,60 +2,105 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Love Quiz for Walelu</title>
   <style>
+    /* General body styles */
     body {
       background-color: #ffe6f0;
-      font-family: 'Comic Sans MS', cursive, sans-serif;
+      font-family: 'Arial', sans-serif; /* Font choice */
       text-align: center;
-      padding: 50px;
+      padding: 0;
       color: #ff4081;
       position: relative;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow-y: auto; /* Allow vertical scrolling */
     }
 
+    /* Container to hold the quiz content */
     .container {
+      width: 100%;
       max-width: 600px;
-      margin: auto;
+      margin: 0 auto;
       padding: 20px;
       border: 2px dashed #ff80ab;
       border-radius: 20px;
       background-color: #fff0f5;
       box-shadow: 0 0 20px rgba(255, 192, 203, 0.6);
+      overflow: hidden; /* Prevent overflow of content */
     }
 
+    /* Button styles */
     button {
-      padding: 10px 20px;
+      padding: 12px 25px;
       background-color: #ff80ab;
       color: white;
       border: none;
-      border-radius: 10px;
+      border-radius: 12px;
       margin: 10px;
       cursor: pointer;
       font-size: 16px;
+      transition: background-color 0.3s;
     }
 
     button:hover {
       background-color: #ff4081;
     }
 
+    /* Heart styles */
     .heart {
       color: #ff4d6d;
-      font-size: 20px;
+      font-size: 25px;
       animation: float 3s infinite;
       position: absolute;
     }
 
+    /* Heart animation */
     @keyframes float {
       0% { transform: translateY(0); opacity: 1; }
       100% { transform: translateY(-100px); opacity: 0; }
     }
 
+    /* Preformatted text for the poem */
     pre {
       white-space: pre-wrap;
       color: #c2185b;
       font-size: 18px;
+      line-height: 1.6;
+      max-height: 300px;
+      overflow-y: auto; /* Allow scrolling within the poem */
+      margin: 0 10px;
     }
 
+    /* Mobile responsiveness */
+    @media (max-width: 600px) {
+      body {
+        padding: 20px;
+      }
+
+      .container {
+        padding: 15px;
+        width: 100%;
+      }
+
+      button {
+        font-size: 14px;
+        padding: 10px 20px;
+      }
+
+      .heart {
+        font-size: 18px;
+      }
+
+      /* Scale down the poem for mobile */
+      pre {
+        font-size: 16px;
+      }
+    }
   </style>
 </head>
 <body>
