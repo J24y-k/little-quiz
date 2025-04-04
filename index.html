@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Love Quiz for Walelu</title>
+  <style>
+    body {
+      background-color: #ffe6f0;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      text-align: center;
+      padding: 50px;
+      color: #ff4081;
+      position: relative;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: auto;
+      padding: 20px;
+      border: 2px dashed #ff80ab;
+      border-radius: 20px;
+      background-color: #fff0f5;
+      box-shadow: 0 0 20px rgba(255, 192, 203, 0.6);
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #ff80ab;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      margin: 10px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    button:hover {
+      background-color: #ff4081;
+    }
+
+    .heart {
+      color: #ff4d6d;
+      font-size: 20px;
+      animation: float 3s infinite;
+      position: absolute;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0); opacity: 1; }
+      100% { transform: translateY(-100px); opacity: 0; }
+    }
+
+    pre {
+      white-space: pre-wrap;
+      color: #c2185b;
+      font-size: 18px;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="container" id="quiz">
+    <h2>HI WALELU</h2>
+    <button id="hiJayButton">Hi Jay</button>
+  </div>
+
+  <script>
+    const quiz = document.getElementById('quiz');
+
+    // Function to handle dynamic button clicks
+    function nextStep(step) {
+      switch(step) {
+        case 1:
+          quiz.innerHTML = `<h2>I miss you</h2>
+                            <button id="missYouButton">I miss you too</button>`;
+          // Reattach event listener to the new button
+          document.getElementById('missYouButton').addEventListener('click', function() {
+            nextStep(2);
+          });
+          break;
+        case 2:
+          quiz.innerHTML = `<h2>You wanna read a poem?</h2>
+                            <button id="yesButton">Yes</button>
+                            <button id="noButton">No</button>`;
+          // Reattach event listeners
+          document.getElementById('yesButton').addEventListener('click', function() {
+            nextStep(3);
+          });
+          document.getElementById('noButton').addEventListener('click', function() {
+            nextStep(4);
+          });
+          break;
+        case 3:
+          quiz.innerHTML = `<h2><em>D’où l’on vient</em></h2>
+                            <pre>From a stranger
+To a lover
+To what,
+may seem like
+a forever
+
+Eye contacts
+Oops,
+It connects
+two different worlds
+to one masterpiece
+
+A single drive
+Waited for a sign
+Hearts began to jive
+Made us dive
+Two souls align
+
+Moments turned into,
+midnight talks,
+counting stars,
+In laughter,
+memorable times
+
+And as days 
+turn into years
+We hold the silence, 
+conquer the fears
+commitments
+
+Nous voilà maintenant
+améliorant mutuellement
+Pour un avenir meilleur
+Unis ensemble
+Une équipe</pre>`;
+          break;
+        case 4:
+          quiz.innerHTML = `<h2>Urgh damn it, I thought you loved me...</h2>
+                            <button id="respondButton">Respond</button>`;
+          // Reattach event listener
+          document.getElementById('respondButton').addEventListener('click', function() {
+            nextStep(5);
+          });
+          break;
+        case 5:
+          quiz.innerHTML = `<h2>Hearts for you anyway!</h2>`;
+          dropHearts();
+          break;
+      }
+    }
+
+    function dropHearts() {
+      for (let i = 0; i < 30; i++) {
+        const heart = document.createElement('div');
+        heart.classList.add('heart');
+        heart.innerHTML = '❤';
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.top = Math.random() * 100 + 'vh';
+        heart.style.animationDuration = (2 + Math.random() * 3) + 's';
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 3000);
+      }
+    }
+
+    // Initial button click event for "Hi Jay"
+    document.getElementById('hiJayButton').addEventListener('click', function() {
+      nextStep(1);
+    });
+  </script>
+</body>
+</html>
